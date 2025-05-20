@@ -224,12 +224,19 @@ struct FMyStatData : public FTableRowBase
 ![Epic AI 트리](Image/EpicAI.PNG)
 
 
+
+
+<details>
 <summary>🗺️ 미니맵 머티리얼 블루프린트 보기</summary>
 
-![미니맵 HUD](Image/미니맵머테리얼.PNG)
+<br>
 
+![미니맵 머티리얼](Image/미니맵머테리얼.PNG)  
 ![미니맵 HUD](Image/HUD노드.PNG)
+
 </details>
+
+
 
 
 🛠️ 오류 상황 및 해결 방안    
