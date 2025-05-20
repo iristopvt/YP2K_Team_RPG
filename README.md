@@ -14,32 +14,64 @@
 아래에서 그 구조와 기능을 상세히 소개합니다.
 
 클래스 구조도  
-Game Core  
-├── AMyEffectManager : 이펙트 관리  
-├── AMySoundManager : 사운드 관리  
-├── AGameModeBase  
-│ ├── AMyGameModeBase : 필드 사냥 게임 모드  
-│ └── AMyBossGameModeBase : 보스 게임 모드  
-├── ABaseAIController  
-│ ├── AMyPlayerAIController : 동료  AIController    
-│ └── AMyMonsterAIController : 몬스터 AIController     
-│ ├── AMyNormalMonsterController : 일반 몬스터 AIController  
-│ ├── AMyBossAIController  : Boss AIController  
-│ └── AMyNPCAIController : NPC AIController  
-├── AMyCreature (ACharacter)   
-│ ├── AMyPlayer  
-│ │ ├── AMyKnight : 근접 캐릭터  
-│ │ └── AMyArcher : 원거리 캐릭터  
-│ └── AMyMonster  
-│ ├── AMyBaseMonster  
-│ └── AMyBossMonster  
-├── MyItem  
-│ └── MyNPCItem : NPC용 아이템  
-  
-Component  
-├── MyAggroComponent : 보스 타겟 시스템 컴포넌트   
-├── MyInvenComponent : 인벤토리 컴포넌트  
-└── MyStatComponent : 스탯 컴포넌트    
+ MyGameInstance (게임 단계 및 전역 데이터 관리)
+
+- AActor  
+  ├── AEffectManager (이펙트 관리)  
+  ├── ASoundManager (사운드 관리)  
+  ├── AUIManager (UI 전체 관리)  
+  ├── AGameModeBase (게임 진행 관리)  
+  │   ├── AStartGameModeBase (시작 화면 모드)  
+  │   ├── AMyGameModeBase (기본 플레이 모드)  
+  │   │   ├── AStage1NormalGameModeBase (스테이지 1 일반)  
+  │   │   ├── AStage2NormalGameModeBase (스테이지 2 일반)  
+  │   ├── ABossGameModeBase (보스전 모드)  
+  │   │   ├── AStage1BossGameModeBase (스테이지 1 보스)  
+  │   │   ├── AStage2BossGameModeBase (스테이지 2 보스)  
+  ├── AMyCreature (ACharacter 상속)  
+  │   ├── AMyPlayer (플레이어 캐릭터)  
+  │   │   ├── ADragon (특수 조작 캐릭터)  
+  │   ├── AMyMonster  
+  │   │   ├── ANormalMonster  
+  │   │   ├── EpicMonster_witch  
+  │   │   ├── ABossMonster  
+  │   │   ├── ABoss2Monster  
+- AMyComponent  
+  ├── UStatComponent (스탯 관리)  
+  ├── UInventoryComponent (인벤토리 시스템)  
+  ├── UShopComponent (상점 기능)  
+- ABaseItem  
+  ├── AEquipItem (장비 아이템)  
+  │   ├── Helmet, ShoulderGuard, UpperArmor, LowerArmor  
+  │   ├── Sword, Shield  
+  ├── AConsumeItem (소비 아이템)  
+  │   ├── Gold, HP_Potion  
+- AnimationInstance  
+  ├── BaseAnimInstance  
+  ├── PlayerAnimInstance  
+  ├── Monster_N / Boss01 / Boss2 / Epic01  
+  ├── DragonAnimInstance  
+- PlayerController  
+  ├── MyPlayerController (UI 및 입력)  
+  ├── Portal  
+  │   ├── Portal_Home / Stage1 / Stage2_Normal / Stage2_Boss  
+- NPC  
+  ├── AMyNPC (상호작용 NPC)  
+  ├── NPC_NameWidget (이름 위젯)  
+- MonsterAI  
+  ├── AIController_NormalMonster / BossMonster / Boss2 / Epic  
+  ├── BehaviorTree  
+  │   ├── BTDecorator_CanAttack / Stun  
+  │   ├── BTService_FindTarget / CheckHP / PlayerDistance  
+  │   ├── BTTaskNode_Attack / Fireball / Teleport / Summoning / Dash 등  
+- UI  
+  ├── PlayerBarWidget, InventoryWidget, ShopWidget, StatWidget  
+  ├── Boss1Widget / Boss2Widget / MainStartWidget / MiniMapWidget  
+  ├── SkillWidget_test, IconTestWidget  
+  ├── Elements: IndexedButton  
+- 기타  
+  ├── Fireball, MeteorDecal, MeteorDecalPool  
+  ├── Stage 포탈 
 
 
 ## 🔥 맡은 역할
