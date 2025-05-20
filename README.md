@@ -1,4 +1,4 @@
-# Y2PK_Team_RPG
+# YP2K_Team_RPG
 
 🔗 [유튜브 플레이 영상 보기](https://www.youtube.com/watch?v=NWj8hIFVd30)
 
@@ -238,7 +238,9 @@ struct FMyStatData : public FTableRowBase
 
 
 
+
 ### 🛠️ 오류 상황 및 해결 방안    
+
   
 ❗ 오류 상황: 미니맵 좌표 왜곡 현상 발생
 - 초기 미니맵 구현 시, 머티리얼 안에 있는 맵 스케일(사이즈) 값을 모든 스테이지에 동일하게 적용  
