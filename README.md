@@ -124,9 +124,11 @@
 
 📌 플레이어가 스탯 창에서 HP/MP를 올리면 체력바와 마나바 길이가 함께 늘어나도록 구현했습니다.  
    아래는 실제 게임 화면입니다
+
+   ![HP/MP Bar 확장](Image/HPMPBarSize.PNG)
    
 ```cpp
-// 
+// HP,MP Bar Size 조절
 	if (_Widget)
 	{
 		auto PlWidget = Cast<UPlayerBarWidget>(_Widget);
@@ -162,26 +164,73 @@
 		}
 	}
 ```
-📌 AI가 적대 상태일 때 호출되는 함수로, NPC가 공격 몽타주를 실행  
+
+
+📌 플레이어 스탯 
 ```cpp
-// 적대 상태일 경우 공격 시작  
-
-void AMyNPC::Attack_AI()
+// 스탯 데이터
+UENUM()
+enum class StatType
 {
-    if (_statCom->IsDead()) return;
+	HP,
+	MP,
+	STR,
+	DEX,
+	INT,
+	CurHP,
+	CurMP,
+	Other
+};
 
-    if (!_isAttcking && _animInstance)
-    {
-        _animInstance->PlayAttackMontage();
-        _isAttcking = true;
+USTRUCT()
+struct FMyStatData : public FTableRowBase
+{
+	GENERATED_BODY()
 
-        _curAttackIndex %= 3;
-        _curAttackIndex++;
-        _animInstance->JumpToSection(_curAttackIndex);
-    }
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 level;
 
-}
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxHP;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxMP;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 STR;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 DEX;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 INT;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 BonusPoint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 EXP;
+
+};
 ```
+### 🧠 Epic Monster AI 동작 트리  
+에픽 몬스터는 일반 몬스터와는 다른 고유 패턴으로 전투를 수행합니다.   
+- 일정 거리 이상에서는 마법 구체를 발사하거나 독 안개를 생성  
+- 일정 시간마다 소환 스킬을 사용  
+- 플레이어가 가까워지면 근접 공격을 수행하는 식의 AI 동작 구조입니다.
+
+아래는 Epic 몬스터의 Behavior Tree입니다.
+
+![Epic AI 트리](Image/EpicAI.PNG)
+
+
+<summary>🗺️ 미니맵 머티리얼 블루프린트 보기</summary>
+
+![미니맵 HUD](Image/미니맵머테리얼.PNG)
+
+![미니맵 HUD](Image/HUD노드.PNG)
+</details>
+
 
 🛠️ 오류 상황 및 해결 방안    
   
