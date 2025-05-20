@@ -2,6 +2,8 @@
 
 🔗 [유튜브 플레이 영상 보기](https://www.youtube.com/watch?v=NWj8hIFVd30)
 
+📦 [게임 실행 파일 다운로드 (Google Drive)](https://drive.google.com/file/d/1zeKuMhcm5sXBg4Jkd96F8s3Hziz3wklF/view?usp=drive_link)  
+
 ## 📅 프로젝트 정보
 
 - **기간**: 2024년 10월 17일 ~ 2024년 12월 11일 
