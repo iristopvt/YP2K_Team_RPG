@@ -223,12 +223,13 @@ struct FMyStatData : public FTableRowBase
 아래는 Epic 몬스터의 Behavior Tree입니다.
 
 ![Epic AI 트리](Image/EpicAI.PNG)
+---
 
 
-
+<br><br><br>
 
 <details>
-<summary>🗺️ 미니맵 머티리얼 블루프린트 보기</summary>
+  <summary><strong>🗺️ 미니맵 머티리얼 블루프린트 보기</strong></summary>
 
 <br>
 
@@ -238,7 +239,7 @@ struct FMyStatData : public FTableRowBase
 </details>
 
 
-
+<br>
 
 
 ### 🛠️ 오류 상황 및 해결 방안    
